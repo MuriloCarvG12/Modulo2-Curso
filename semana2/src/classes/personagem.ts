@@ -1,4 +1,5 @@
 import Arma from './arma'
+import Armadura from './armadura'
 
 export default class Personagem 
 {
@@ -6,6 +7,7 @@ export default class Personagem
     vida :number = 0
     forca :number = 0
     arma :Arma | null = null 
+    armadura :Armadura | null = null
 
     constructor(nome_personagem :string, vida: number)
     {
@@ -48,6 +50,12 @@ export default class Personagem
     {
         this.arma = arma
     }
+
+    setArmadura(armadura :Armadura)
+    {
+        this.setVida(armadura.Defesa + this.vida)
+    }
+
 
     causarDano() {
         if (this.arma === null) {
