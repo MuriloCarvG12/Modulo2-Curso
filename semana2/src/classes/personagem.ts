@@ -1,4 +1,4 @@
-import Arma from './arma.ts'
+import Arma from './arma'
 
 export default class Personagem 
 {
@@ -49,9 +49,12 @@ export default class Personagem
         this.arma = arma
     }
 
-    atacarAlvo(inimigo :string)
-    {
-
+    causarDano() {
+        if (this.arma === null) {
+            return this.forca
+        } else {
+            return this.forca + this.arma.getDano()
+        }
     }
 
     receberDano(dano: number)
@@ -67,9 +70,16 @@ export default class Personagem
     {
         this.arma = arma
     }
-    calcularAtaque(dano: number)
-    {
 
+    atacar_inimigo(personagem :Personagem)
+    {
+        const chanceDeAcerto = Math.random(); 
+        
+        if (chanceDeAcerto < 0.5)  {
+            console.log("ataque falhou")
+        } else {
+            personagem.receberDano(this.causarDano())
+        }
     }
 }
 
