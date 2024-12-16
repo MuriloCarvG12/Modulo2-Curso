@@ -41,3 +41,15 @@ insert into pedidos(cliente_id, data) values (2, '2015-3-17')
 insert into pedidos(cliente_id, data) values (3, '2013-11-9')
 insert into pedidos(cliente_id, data) values (4, '2006-4-3')
 insert into pedidos(cliente_id, data) values (5, '2002-9-13')
+
+create table clientes_pedido
+	(
+		id serial primary key,
+		pedido_id integer references pedidos(id),
+		produto_id integer references produtos (id),
+		quantidade integer not null,
+		valor_total decimal(10, 2)
+	)
+
+insert into clientes_pedido(pedido_id, produto_id, quantidade, valor_total) values (5,4,9,100)
+insert into clientes_pedido(pedido_id, produto_id, quantidade, valor_total) values (4,3,2,120)
