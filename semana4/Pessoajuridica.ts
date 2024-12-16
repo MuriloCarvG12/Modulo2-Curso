@@ -1,3 +1,5 @@
+
+
 class PessoaJuridica
 {
     razaoSocial: string // razao social da empresa
